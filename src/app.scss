@@ -1,0 +1,308 @@
+@import url('https://rsms.me/inter/inter.css');
+
+:root {
+  --color-light: #DCDCDC;
+  --color-dark: #212121;
+  --color-signal: #118593;
+
+  --color-background: var(--color-light);
+  --color-text: var(--color-dark);
+  --color-accent: var(--color-signal);
+
+  --size-bezel: .5rem;
+  --size-radius: 4px;
+
+  line-height: 1.4;
+
+  font-family: 'Inter', sans-serif;
+  font-size: calc(.6rem + .4vw);
+  color: var(--color-text);
+  //background: var(--color-background);
+  background: white;
+  font-weight: 300;
+  padding: 0 calc(var(--size-bezel) * 3);
+}
+
+
+mark {
+  background: white;
+  //color: var(--color-text);
+  font-weight: bold;
+  padding: 0 0.2em;
+}
+
+.spacer {
+  padding: 12px;
+}
+
+.l-design-width {
+  max-width: 40rem;
+  padding: 1rem;
+}
+
+
+.columns {
+  column-count: 2;
+  gap: 3rem;
+  align-items: center;
+  break-inside: avoid-column;
+  overflow: hidden;
+  display: inline-block;
+}
+
+
+.button-group {
+  margin-top: calc(var(--size-bezel) * 2.5);
+}
+
+button {
+  color: currentColor;
+  padding: var(--size-bezel) calc(var(--size-bezel) * 2);
+  background: var(--color-accent);
+  border: none;
+  border-radius: var(--size-radius);
+  font-weight: 900;
+
+  &[type=reset] {
+    background: var(--color-background);
+    font-weight: 200;
+  }
+
+  &[type=profile] {
+    width: 12em;
+  }
+
+  &:hover {
+    background: #449999;
+    transition: all ease-in-out 0.2s;
+  }
+
+  &[type=profileCancel] {
+    width: 12em;
+    background: gray;
+  }
+
+  &[type=cancel] {
+    background: gray;
+  }
+
+  &[type=profileCancel]:hover {
+    background: #999898;
+    transition: all ease-in-out 0.2s;
+  }
+
+  &[type=cancel]:hover {
+    background: #999898;
+    transition: all ease-in-out 0.2s;
+  }
+
+  &[type=signOut] {
+    background: #ec5151;
+  }
+
+  &[type=signOut]:hover {
+    background: rgb(241, 121, 121);
+    transition: all ease-in-out 0.2s;
+  }
+
+  &[type=save] {
+    background: #36a54e;
+  }
+
+  &[type=saveFixedLength] {
+    background: #36a54e;
+    width: 12em;
+  }
+
+  &[type=save]:hover {
+    background: rgb(93, 212, 153);
+    transition: all ease-in-out 0.2s;
+  }
+}
+
+button + button {
+  margin-left: calc(var(--size-bezel) * 2);
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+.navbar__wrapper {
+  background-color: teal;
+  width: 100%;
+  justify-content: center;
+  height: 2cm;
+  display: flex;
+  align-items: center;
+  top: 0px;
+  z-index: 9999;
+  position: fixed;
+  right: 0;
+}
+
+a {
+  margin: 8px;
+  justify-content: right;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: var(--color-accent);
+  transition: all ease-in-out 0.2s;
+}
+
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+
+nav a:hover {
+  background: #449999;
+  transition: all ease-in-out 0.2s;
+  color: #fff;
+
+}
+
+nav .active {
+  //background: #118593;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  text-underline-style: dotted;
+  background: #449999;
+  //color: deeppink;
+}
+
+link {
+  margin: 100px;
+  padding: 100px;
+}
+
+
+.profilePic {
+
+  width: 200px;
+  min-height: 300px;
+  height: 100%;
+  object-fit: cover; // here is the key
+
+}
+
+.profilePageBtn {
+  color: currentColor;
+  padding: var(--size-bezel) calc(var(--size-bezel) * 2);
+  background: #abc2aa;
+  margin-right: 1em;
+}
+
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border-width: 5px;
+  border-color: gray;
+  border-style: outset;
+  margin-right: 2em;
+}
+
+.avatar2 {
+  margin-left: 43%;
+  vertical-align: middle;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border-width: 5px;
+  border-color: gray;
+  border-style: solid;
+  margin-top: 2em;
+  margin-bottom: 3em;
+}
+
+.inner {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.profileImage {
+  max-height: 200px;
+  max-width: 200px;
+  border-radius: 4px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1ch;
+}
+
+.profileImage2 {
+  max-height: 200px;
+  max-width: 200px;
+  border-radius: 4px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1ch;
+  border-color: gray;
+  border-style: solid;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.centered2 {
+  position: absolute;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  margin-bottom: 2em;
+}
+
+.test {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bioHeader {
+  margin-left: .5cm;
+}
+
+.centerButtons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.centerIcon {
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.centerObject {
+  margin-left: 26%;
+}
+
+.dummyImage { //brukt til midlertidlig forside
+  height: 500px;
+  width: 612px;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border: 2px solid #fff;
+  box-shadow: 10px 10px 5px #ccc;
+}
+
+#splash { //brukt til midlertidlig forside
+  text-align: center;
+}
+

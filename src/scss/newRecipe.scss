@@ -1,0 +1,44 @@
+
+.input {
+  &__label {
+    margin: 2mm auto;
+    margin-left: .5cm;
+    margin-top: 8mm;
+  }
+
+  &__field {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+
+    &__big {
+      display: block;
+      width: 90%;
+      margin: 0 auto;
+      min-height: 3cm;
+    }
+  }
+
+  &__submit {
+    display: block;
+    margin: .5cm auto;
+    width: 80%;
+  }
+
+}
+
+.newRecipe {
+  background: white;
+  color: #36454f;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  justify-content: center;
+  margin: 2rem; width: 40%;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}

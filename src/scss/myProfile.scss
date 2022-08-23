@@ -1,0 +1,32 @@
+
+//
+//.container-2 {
+//  display: flex;
+//  justify-content: center;
+//}
+//
+//.container-3 {
+//  display: flex;
+//  flex-direction: column;
+//  //justify-content: space-evenly;
+//}
+
+
+.container-3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    column-count: 2;
+    align-items: center;
+    //width: 100%;
+    //float: right;
+  }
+
+.hovering-container-1 {
+  z-index: 5;
+  width: 100%;
+}
+
+.hovering-container-2 {
+  z-index: 2;
+}
