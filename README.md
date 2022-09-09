@@ -2,9 +2,13 @@
 
 Denne nettsiden er utviklet i løpet av våren 2022 i emnet Programvareutvikling på NTNU, et emne som går ut på at en gruppe skal utvikle et produkt basert på ønsker fra produkteier i et smidig utviklingsprosjekt. Store deler av koden er blitt forbedret gjennom sommeren 2022 av undertegnede.
 
-### For å kjøre programmet må man først installere følgende i terminalen for å kjøre nettsiden:
+### For å kjøre programmet må man først installere følgende i terminalen:
+
+<pre><code>npm i</code></pre>
 
 <pre><code>npm install firebase</code></pre>
+
+<pre><code>npm install react-router-dom</code></pre>
 
 #### Til slutt kjøres programmet ved å skrive 
 
