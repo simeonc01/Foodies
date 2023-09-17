@@ -93,6 +93,7 @@ function MyProfile() {
             })
             .catch((error) => {
                 console.log(error.message)
+                console.log("hei")
             });
     }
 
