@@ -1,8 +1,7 @@
-import {Card, FloatingLabel, Form} from "react-bootstrap";
+import {FloatingLabel, Form} from "react-bootstrap";
 import {auth, db} from "../firebaseConfig";
-import {useEffect, useState} from "react";
-import {collection, getDocs, setDoc} from "firebase/firestore";
-import {getStorage, ref, uploadBytes} from "firebase/storage"
+import {useState} from "react";
+import {collection, setDoc} from "firebase/firestore";
 import {doc, addDoc} from "firebase/firestore";
 import {onAuthStateChanged} from "firebase/auth";
 import {useNavigate} from "react-router";
@@ -12,7 +11,6 @@ import {useNavigate} from "react-router";
 
     const [ text, setText ] = useState();
     const [currentUser, setCurrentUser] = useState({});
-    const [recipe] = useState(props.recipe)
     const [comments, setComments] = useState(props.comments);
 
     const commentCollectionRef = collection(db, "comments");

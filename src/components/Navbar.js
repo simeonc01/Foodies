@@ -21,9 +21,13 @@ function Navbar() {
     })
 
     const loadUser = async () => {
-        const data = await getDocs(usersCollectionRef);
-        const user = data.docs.filter(doc => doc.id === currentUser.uid).reduce((a, b) => a).data();
-        setAdmin(user.admin);
+        try {
+            const data = await getDocs(usersCollectionRef);
+            const user = data.docs.filter(doc => doc.id === currentUser.uid).reduce((a, b) => a).data();
+            setAdmin(user.admin);
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     // Function for NavBar at top of every page. Add new NavLink to add new button to navbar. Must include new route

@@ -19,7 +19,6 @@ function RecipeCard(props) {
     const [timeEstimate] = useState(props.timeEstimate)
     const [portions] = useState(props.portions)
     const [name] = useState(props.nameOfUser)
-    const [category] = useState(props.category)
     const [recipeId] = useState(props.id)
     const [date] = useState(props.date)
     const [cardDate, setCardDate] = useState("");
@@ -97,8 +96,12 @@ function RecipeCard(props) {
 
     const loadUser = async () => {
         const data = await getDocs(usersCollectionRef);
-        const user = data.docs.filter(doc => doc.id === currentUser.uid).reduce((a, b) => a).data();
-        setAdmin(user.admin);
+        try {
+            const user = data.docs.filter(doc => doc.id === currentUser.uid).reduce((a, b) => a).data();
+            setAdmin(user.admin);
+        } catch (error) {
+            console.log(error)
+        } 
     }
 
     const handleDate = async () => {
@@ -142,7 +145,7 @@ function RecipeCard(props) {
                 setCardDate(d + " uker siden")
             }
         } else {
-            const d = Math.round(difference / (1000 * 60 * 60 * 24 * 7))
+            const d = Math.round(difference / (1000 * 60 * 60 * 24 * 7 * 4))
             if (d === 1) {
                 setCardDate("1 måned siden")
             } else {
@@ -282,9 +285,10 @@ function RecipeCard(props) {
             <div className="centerIcon">
                 <Card.Body style={{maxWidth: "26em"}}>
                     <Card.Title>{title}</Card.Title>
-                    <Card.Subtitle> {timeEstimate}</Card.Subtitle>
-                    <Card.Subtitle> {portions} porsjoner </Card.Subtitle>
-                    <Card.Subtitle> Laget av {name} </Card.Subtitle>
+                    <p className="text"> {timeEstimate}</p>
+                    {portions === "1" && <p className="text"> {portions} porsjon </p>}
+                    {portions !== "1" && <p className="text"> {portions} porsjoner </p>}
+                    <p className="text"> Laget av {name} </p>
                 </Card.Body>
 
                 {!hasLiked && 

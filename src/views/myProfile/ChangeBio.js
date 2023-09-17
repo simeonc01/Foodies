@@ -1,5 +1,4 @@
 import Textarea from 'react-textarea-autosize';
-import {useForm} from "react-hook-form";
 import {useState} from "react";
 import {useNavigate} from "react-router";
 import {auth, db} from "../../firebaseConfig";
@@ -10,7 +9,6 @@ import {collection, doc, getDocs, updateDoc} from "firebase/firestore";
 function ChangeBio() {
 
     const usersCollectionRef = collection(db, "users")
-    const {register} = useForm()
     const [oldBio, setOldBio] = useState("")
     const [newBio, setNewBio] = useState("")
     const [user, setUser] = useState({});

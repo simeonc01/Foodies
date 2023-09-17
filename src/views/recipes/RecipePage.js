@@ -6,7 +6,7 @@ import {useLocation, useNavigate} from "react-router";
 import "../../scss/recipePage.scss";
 import {onAuthStateChanged} from "firebase/auth";
 import {auth, db} from "../../firebaseConfig";
-import {deleteDoc, doc, setDoc, updateDoc} from "firebase/firestore";
+import {deleteDoc, doc, setDoc} from "firebase/firestore";
 import {Modal} from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import UpdateRecipe from "./UpdateRecipe";
@@ -19,7 +19,7 @@ function RecipePage() {
     // Had to use an empty array to create child react elements, or else they get set to null
     const [recipe, setRecipe] = useState([])
     //const [user, setUser] = useState([])
-    const [rating, setRating] = useState(recipe.rating) // initial rating value
+    const [rating] = useState(recipe.rating) // initial rating value
     const {state} = useLocation()
     const [showEditButton, setShowEditButton] = useState(false);
     const [showEditor, setShowEditor] = useState(false);
@@ -35,24 +35,25 @@ function RecipePage() {
      * Loads in current user
      */
     onAuthStateChanged(auth, (user) => {
-        setCurrentUser(user)
-        setCurrentUserID(currentUser.uid)
-
-        if (currentUser !== null) {
-            if (currentUser.uid === state.recipe.userID) {
-                setShowEditButton(true)
-                setShowVisitButton(false)
-            }
-        } 
+        try {
+            setCurrentUser(user)
+            setCurrentUserID(currentUser.uid)
+    
+            if (currentUser !== null) {
+                if (currentUser.uid === state.recipe.userID) {
+                    setShowEditButton(true)
+                    setShowVisitButton(false)
+                }
+            } 
+        } catch (error) {
+            console.log(error)
+        }
     })
     /**
      * Sets recipe from received props value. Only runs once on first render.
      */
     useEffect(() => {
         setRecipe([state.recipe])
-        console.log(recipe)
-        console.log(state.recipe)
-        console.log(state.recipe.userID)
     }, [])
 
     /**
