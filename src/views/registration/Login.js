@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {useLocation, useNavigate} from "react-router";
+import {useNavigate} from "react-router";
 import {auth, db} from "../../firebaseConfig";
 import {signInWithEmailAndPassword} from "firebase/auth";
 import {Alert} from "react-bootstrap";
@@ -11,16 +11,13 @@ function Login() {
     const [ loginPassword, setLoginPassword ] = useState("");
     const [ loginError, setLoginError] = useState(""); 
 
-    const location = useLocation();
     const usersCollectionRef = collection(db, "users")
 
     const login = async () => {
         try {
             setLoginError("");
-            const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-
-            const data = await getDocs(usersCollectionRef);
-
+            await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+            await getDocs(usersCollectionRef);
             goToHome()
 
         } catch (error) {

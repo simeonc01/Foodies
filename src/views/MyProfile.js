@@ -51,21 +51,26 @@ function MyProfile() {
     }
 
     const loadUser = async () => {
-        const data = await getDocs(usersCollectionRef);
-        const user = data.docs.filter(doc => doc.id === currentUser.uid).reduce((a, b) => a).data();
-        setEmail(user.email);
-        setFirstname(user.firstName);
-        setLastName(user.lastName);
-        setFavoriteRecipes(user.favoriteRecipes);
-        if (user.bio === "") {
-            setBio("(Ingen bio)");
-        } else {
-            setBio(user.bio);
-        }
-        if (user.profilePictureURL === currentUser.uid) {
-            handleDownloadImage();
-        } else {
-            handleDownloadDefault();
+        try {
+            console.log("heiqweoiwqeiqwie0qi")
+            const data = await getDocs(usersCollectionRef);
+            const user = data.docs.filter(doc => doc.id === currentUser.uid).reduce((a, b) => a).data();
+            setEmail(user.email);
+            setFirstname(user.firstName);
+            setLastName(user.lastName);
+            setFavoriteRecipes(user.favoriteRecipes);
+            if (user.bio === "") {
+                setBio("(Ingen bio)");
+            } else {
+                setBio(user.bio);
+            }
+            if (user.profilePictureURL === currentUser.uid) {
+                handleDownloadImage();
+            } else {
+                handleDownloadDefault();
+            }
+        } catch (error) {
+            console.log(error.message)
         }
     }
 

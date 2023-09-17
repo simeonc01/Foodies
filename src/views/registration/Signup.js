@@ -30,7 +30,7 @@ function Signup() {
             try {
                 setSignupError("");
                 setLoading(true);
-                const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
+                await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
                 const currentUser = auth.currentUser;
                 upload(photo, currentUser, setLoading);
                 console.log("User info uploaded to database")
@@ -88,7 +88,7 @@ function Signup() {
             });
         } else {
             const fileRef = ref(storage, "profilePictures/" + user.uid + ".png");
-            const snapshot = await uploadBytes(fileRef, file);
+            await uploadBytes(fileRef, file);
             await setDoc(doc(db, "users", user.uid), {
                 email: registerEmail,
                 firstName: firstName,
@@ -102,25 +102,21 @@ function Signup() {
 
     const navigate = useNavigate();
 
-    const goToLogin = async () => {
-        navigate("/login")
-    }
-
     const goToHome = async () => {
         navigate("/home")
     }
 
     return(
         <div className="centered" style={{marginTop:"3.5em", marginLeft:"5%"}}>
-            <p>E-post:</p>
+            <p style={{marginBottom: 0}} >E-post:</p>
             <input onChange={(event) => {setRegisterEmail(event.target.value)}}/>
-            <p>Fornavn:</p>
+            <p style={{marginBottom: 0, marginTop: 10}}>Fornavn:</p>
             <input onChange={(event) => {setFirstName(event.target.value)}}/>
-            <p>Etternavn:</p>
+            <p style={{marginBottom: 0, marginTop: 10}}>Etternavn:</p>
             <input onChange={(event) => {setLastName(event.target.value)}}/>
-            <p>Passord:</p>
+            <p style={{marginBottom: 0, marginTop: 10}}>Passord:</p>
             <input onChange={(event) => {setRegisterPassword(event.target.value)}} type="password"/>
-            <p>Bekreft passord:</p>
+            <p style={{marginBottom: 0, marginTop: 10}}>Bekreft passord:</p>
             <input onChange={(event) => {setRegisterPassword2(event.target.value)}} type="password"/>
             <p></p>
             <div >

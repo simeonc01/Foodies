@@ -2,9 +2,9 @@ import image1 from './../images/HomePicture1.jpg'
 import image2 from './../images/HomePicture2.jpg'
 import image3 from './../images/Logo.png'
 //import '../../app.scss'
-import {useLocation, useNavigate} from "react-router";
-import {auth, db} from "../firebaseConfig";
-import {onAuthStateChanged, signOut} from "firebase/auth";
+import {useNavigate} from "react-router";
+import {auth} from "../firebaseConfig";
+import {onAuthStateChanged} from "firebase/auth";
 import {useState} from "react";
 
 

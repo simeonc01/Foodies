@@ -9,8 +9,7 @@ import {
     Checkbox,
     FormGroup,
     FormControlLabel,
-    TextField
-} from "@material-ui/core"
+} from "@mui/material"
 
 
 export default function Recipes() {
@@ -58,11 +57,11 @@ export default function Recipes() {
 
     return (
         <div >
-            <div class = "split right" className = "container-recipeFeedOrigin">  
+            <div class = "split right" className="container-recipeFeedOrigin">  
                 <RecipeForm recipes={recipes}/>
-            </div>
+            </div> 
             <div class="split left" >
-                <FormControl>
+                <FormControl style={{marginLeft: 25}} >
                     <FormGroup>
                         {Categories.map(categories => ( //lager knapper for alle kategoriene som er oppgitt i categories.js-filen
                             <FormControlLabel

@@ -4,7 +4,6 @@ import {getStorage, ref, uploadBytes} from "firebase/storage";
 import {db} from "../../firebaseConfig";
 import {useNavigate} from "react-router";
 import "../../scss/updateRecipe.scss"
-import { useEffect, useState } from "react";
 
 
 function UpdateRecipe(props) {
@@ -13,12 +12,6 @@ function UpdateRecipe(props) {
     const navigate = useNavigate();
     
 
-    // Slett!
-    useEffect(() => {
-        console.log("Nå er vi her!")
-        console.log(props)
-        console.log(props.recipe)
-    }, [])
 
     /**
      * Updates recipe with new fields from <RecipeForm>

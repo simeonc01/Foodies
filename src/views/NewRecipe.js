@@ -1,7 +1,7 @@
 import NewRecipeForm from "../components/NewRecipeForm";
 import {onAuthStateChanged} from "firebase/auth";
 import {auth, db} from "../firebaseConfig";
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import {addDoc, collection, getDocs} from "firebase/firestore";
 import {getStorage, ref, uploadBytes} from "firebase/storage";
 import {useNavigate} from "react-router";
@@ -9,6 +9,7 @@ import "../scss/newRecipe.scss"
 
 
 function NewRecipe() {
+
     const usersCollectionRef = collection(db, "users")
     const recipesCollectionRef = collection(db, "recipes");
 
@@ -33,10 +34,14 @@ function NewRecipe() {
      * @return {Promise<void>}
      */
     const loadNameOfUser = async () => {
-        const data = await getDocs(usersCollectionRef);
-        const user = data.docs.filter(doc => doc.id === currentUser.uid).reduce((a, b) => a).data();
-        setNameOfUser(user.firstName + " " + user.lastName);
-        console.log(user.firstName + " " + user.lastName)
+        try {
+            const data = await getDocs(usersCollectionRef);
+            const user = data.docs.filter(doc => doc.id === currentUser.uid).reduce((a, b) => a).data();
+            setNameOfUser(user.firstName + " " + user.lastName);
+            console.log(user.firstName + " " + user.lastName)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     /**

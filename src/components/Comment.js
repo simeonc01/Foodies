@@ -23,18 +23,22 @@ import CommentForm from "./CommentForm"
     useEffect(() => {
         setComments(props.comments)
         comments.forEach(async element => {
-            const data = await getDocs(commentCollectionRef);
-            const d = data.docs.reduce(a => a).data();
-            var array = selectedComments;
-            if (array.indexOf(d) !== -1) {
-                array.push(d)
-                setSelectedComments(array)
+            try {
+                const data = await getDocs(commentCollectionRef);
+                const d = data.docs.reduce(a => a).data();
+                var array = selectedComments;
+                if (array.indexOf(d) !== -1) {
+                    array.push(d)
+                    setSelectedComments(array)
+                }
+            } catch (error) {
+                console.log(error)
             }
         });
     }, [currentUser])
     
 
-
+    /*
     const loadComment = async (c) => {
         const data = await getDocs(commentCollectionRef);
         try {
@@ -44,7 +48,7 @@ import CommentForm from "./CommentForm"
             console.log(error)
             console.log("nei")
         }
-    }
+    } */
 
 
 

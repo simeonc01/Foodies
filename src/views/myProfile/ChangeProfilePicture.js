@@ -1,4 +1,3 @@
-import { onAuthStateChanged, signOut} from "firebase/auth";
 import { useState, useEffect } from "react";
 import { auth, db } from "../../firebaseConfig";
 import {getDownloadURL, getStorage, ref, uploadBytes} from "firebase/storage";
@@ -21,8 +20,7 @@ function ChangeProfilePicture() {
 
     useEffect(() => {
             loadUser();
-        }, []
-    )
+    }, [])
 
     const handleChange = (e) => {
         const etf = e.target.files[0]; 
@@ -43,14 +41,17 @@ function ChangeProfilePicture() {
 
 
     const loadUser = async () => {
-        const data = await getDocs(usersCollectionRef);
-        const currentUser = data.docs.filter(doc => doc.id === user.uid).reduce((a, b) => a).data();
-        if (currentUser.profilePictureURL === user.uid) {
-            handleDownloadImage();
-        } else {
-            handleDownloadDefault();
+        try {
+            const data = await getDocs(usersCollectionRef);
+            const currentUser = data.docs.filter(doc => doc.id === user.uid).reduce((a, b) => a).data();
+            if (currentUser.profilePictureURL === user.uid) {
+                handleDownloadImage();
+            } else {
+                handleDownloadDefault();
+            }
+        } catch (error) {
+            console.log(error)
         }
-
     }
 
     const handleDownloadImage = async () => {
